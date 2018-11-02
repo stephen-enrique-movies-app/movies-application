@@ -28,26 +28,19 @@ getMovies().then((movies) => {
 
 
 
-$.ajax({
-    type: 'POST',
-    url: './api/movies',
-    data: {
-        title: $('#title').val(),
-        rating: $('#rating').val(),
-        genre: $('#genre').val()
-    },
-}).done(function (data) {
+$.ajax('./api/movies').done((data) => {
     console.log(data);
+
     const buildMovieHtml = () => {
       let html = "";
-      html += $('.container').html(`<h1>data.title</h1>`);
+      html += $('.container').html("<h1>" + data[0].title + "</h1>");
       return html;
 
-    }
-
-    // $('.container').hide();
-
+    };
     buildMovieHtml();
 
 });
+    // $('.container').hide();
+
+
 
