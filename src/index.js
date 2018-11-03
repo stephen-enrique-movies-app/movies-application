@@ -31,10 +31,10 @@ getMovies().then((movies) => {
 $.ajax('./api/movies').done((data) => {
     console.log(data);
 
-    const buildMovieHtml = () => {
-      let html = "";
-      html += $('.container').html("<h1>" + data[0].title + "</h1>");
-      return html;
+        const buildMovieHtml = () => {
+            let html = "";
+            html += $('.container').html("<h1>" + data[1].title + "</h1>");
+            return html;
 
     };
     buildMovieHtml();
