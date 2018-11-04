@@ -37,12 +37,21 @@ $.ajax('./api/movies').done((data) => {
             const buildTitle = (() => {
                 `${$('div.container')
                     .replaceWith("<div id='main-container' class='container-fluid'>" +
-                    "<h1 class='text-center'>Our Movie App</h1>" +
+                    "<h1 id='main-heading' class='text-center'>Our Movie App</h1>" +
                     "<div id='movie-container' class='flex-container'></div>" +
                     "</div>")}`
 
             });
             buildTitle();
+
+            // Function to add form
+            const buildForm = (() => {
+                `${$('#main-heading')
+                    .append("<div id='addForm'>" +
+                        "<input type='search' placeholder='Add a movie...' onsubmit='click' class='w-90'>" +
+                        "</div>")}`
+            });
+            buildForm();
 
 
             //==== Function to build Movie Cards
