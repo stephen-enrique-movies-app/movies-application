@@ -60,7 +60,7 @@ $.ajax('./api/movies').done((data) => {
                         "    <div class=\"col\">\n" +
                         "      <input type=\"text\" class=\"form-control w-50\" placeholder=\"Rating (1 - 5)\">\n" +
                         "    </div>\n" +
-                        "<button type='submit' class=\"btn btn-primary\">Submit</button>" +
+                        "<button type='submit' id='addMovieBtn' class=\"btn btn-primary\">Submit</button>" +
                         "  </div>\n" +
                         "</form>" +
                         // "<input type='search' placeholder='Title...' onsubmit='click' class='w-90 float-left'>" +
@@ -84,9 +84,9 @@ $.ajax('./api/movies').done((data) => {
                 data.forEach((movie) => {
                     html += "<div class='movie-card float-left'>";
                     html += "<h5 class=''><img class='img' src='img/" + movie.id + ".jpg'>";
-                    html += movie.title + "</h5>";
+                    html += movie.title  + " (" + movie.year + ")</h5>";
                     html += "<h5>Rating: " + movie.rating + "</h5>";
-                    html += "<h5>ID# " + movie.id + "</h5>";
+                    // html += "<h5>Year: " + movie.year + "</h5>";
                     html += "</div>";
                     console.log(movie.image)
                 });
