@@ -48,10 +48,33 @@ $.ajax('./api/movies').done((data) => {
             const buildForm = (() => {
                 `${$('#main-heading')
                     .append("<div id='addForm'>" +
-                        "<input type='search' placeholder='Add a movie...' onsubmit='click' class='w-90'>" +
-                        "</div>")}`
+                        "<br>" +
+                        "<h3 id='formHeader' class='float-left'>Add a Movie</h3>" +
+                        "<form id='addMovieForm'>\n" +
+                        "  <div class=\"row\">\n" +
+                        "    <div class=\"col\">\n" +
+                        "      <input type=\"text\" class=\"form-control w-80\" placeholder=\"Title: \">\n" +
+                        "    </div>\n" +
+                        
+                        
+                        "    <div class=\"col\">\n" +
+                        "      <input type=\"text\" class=\"form-control w-50\" placeholder=\"Rating (1 - 5)\">\n" +
+                        "    </div>\n" +
+                        "<button type='submit' class=\"btn btn-primary\">Submit</button>" +
+                        "  </div>\n" +
+                        "</form>" +
+                        // "<input type='search' placeholder='Title...' onsubmit='click' class='w-90 float-left'>" +
+                        
+                        "<br>" +
+                        "</div>" +
+                    "<br>")}`
             });
             buildForm();
+            $('#addMovieForm').hide();
+            $('#formHeader').click(function () {
+                $('#addMovieForm').slideToggle();
+            });
+
 
 
             //==== Function to build Movie Cards
