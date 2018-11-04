@@ -1,5 +1,6 @@
 html, body {
     height: 100%;
+    background-color: steelblue;
 }
 
 .container {
@@ -7,4 +8,29 @@ html, body {
     top: 50%;
     transform: translateY(-100%);
     text-align: center;
+}
+
+.flex-container {
+    display: flex;
+    justify-content: center;
+}
+
+.img {
+    max-height: 300px;
+}
+/*.flex-item {*/
+    /*flex: 1;*/
+    /*margin: 0px 10px 0px 10px;*/
+
+/*}*/
+
+#movie-container {
+    text-align: center;
+}
+
+.movie-card {
+    background-color: indianred;
+    height: 300px;
+    width: 200px;
+    margin: 0px 20px;
 }
