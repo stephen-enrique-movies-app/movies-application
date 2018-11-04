@@ -32,6 +32,7 @@ $.ajax('./api/movies').done((data) => {
     //==== Function to build HTML
     const buildHtml = () => {
 
+
             //==== Function to build Title
             const buildTitle = (() => {
                 `${$('div.container')
@@ -40,31 +41,8 @@ $.ajax('./api/movies').done((data) => {
                     "<div id='movie-container' class='flex-container'></div>" +
                     "</div>")}`
 
-                // <div id="main-container" class="container-fluid">
-                //     <h1>Weather Application</h1>
-                // <h3>San Antonio</h3>
-                // <div id="weatherForecast" class="flex-container">
-                //     <div id="day1" class="flex-item float-left weather-card"></div><br><br>
-                //     <div id="day2" class="flex-item float-left weather-card"></div>
-                //     <div id="day3" class="flex-item float-left weather-card"></div>
-                //     </div>
-
-                // let html = "";
-                // html += $('div.container').replaceWith(;
-                // html += "<div id='main-container' class='container-fluid'></div>");
-                // $('h1').replaceWith(
-                //     "<h1 class='text-center'>Our Movie App</h1>");
-
-                // let html = "";
-                // html += "<h1 class='text-center'>Our Movie App</h1>";
-                // html += "<div id='main-container' class='container-fluid'>";
-                // html += "<div id='movie-container' class='movie-card'>";
-                // html += "</div></div>";
-                // return html;
             });
             buildTitle();
-
-
 
 
             //==== Function to build Movie Cards
@@ -88,10 +66,31 @@ $.ajax('./api/movies').done((data) => {
     buildHtml();
 
 
+});
 
+//================ Trash Bin ====================
 
+                // <div id="main-container" class="container-fluid">
+                //     <h1>Weather Application</h1>
+                // <h3>San Antonio</h3>
+                // <div id="weatherForecast" class="flex-container">
+                //     <div id="day1" class="flex-item float-left weather-card"></div><br><br>
+                //     <div id="day2" class="flex-item float-left weather-card"></div>
+                //     <div id="day3" class="flex-item float-left weather-card"></div>
+                //     </div>
 
+                // let html = "";
+                // html += $('div.container').replaceWith(;
+                // html += "<div id='main-container' class='container-fluid'></div>");
+                // $('h1').replaceWith(
+                //     "<h1 class='text-center'>Our Movie App</h1>");
 
+                // let html = "";
+                // html += "<h1 class='text-center'>Our Movie App</h1>";
+                // html += "<div id='main-container' class='container-fluid'>";
+                // html += "<div id='movie-container' class='movie-card'>";
+                // html += "</div></div>";
+                // return html;
 
 
     // const buildTitle = (() => {
@@ -132,13 +131,5 @@ $.ajax('./api/movies').done((data) => {
     //     return html;
     // });
     // $('.movie-container').append(buildMovieCards());
-
-
-
-
-});
-
-
-
 
 

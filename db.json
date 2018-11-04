@@ -4,28 +4,24 @@
       "title": "Casablanca",
       "year": "1942",
       "rating": "4",
-      "id": 1,
-      "image":""
+      "id": 1
     },
     {
       "title": "Star Wars: A New Hope",
       "year": "1977",
       "rating": "5",
-      "id": 2,
-      "image":""
+      "id": 2
     },
     {
       "title": "Back to the Future",
       "year": "1985",
       "rating": "5",
-      "id": 3,
-      "image":""
+      "id": 3
     }, {
       "title": "Scarface",
       "year": "1983",
       "rating": "5",
-      "id": 4,
-      "image": "public/img/scarface.jpg"
+      "id": 4
     }
   ]
 }
