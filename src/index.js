@@ -44,7 +44,7 @@ $.ajax('./api/movies').done((data) => {
             });
             buildTitle();
 
-            // Function to add form
+            //==== Function to add Form
             const buildForm = (() => {
                 `${$('#main-heading')
                     .append("<div id='addForm'>" +
@@ -70,10 +70,24 @@ $.ajax('./api/movies').done((data) => {
                     "<br>")}`
             });
             buildForm();
+
+            //==== Form view toggle
             $('#addMovieForm').hide();
             $('#formHeader').click(function () {
                 $('#addMovieForm').slideToggle();
             });
+
+            // //==== Add input from form to
+            // const addMovieSubmitButton = document.querySelector('#addMovieBtn');
+            // addMovieSubmitButton.addEventListener('click',addMovie);
+            // addMovieSubmitButton.addEventListener('keydown', keyEnter);
+            //
+            // const addMovie = () => {
+            //     let newMovie = {
+            //         title: "",
+            //         rating: ""
+            //     }
+            // };
 
 
 
