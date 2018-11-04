@@ -2,34 +2,30 @@
   "movies": [
     {
       "title": "Casablanca",
+      "year": "1942",
       "rating": "4",
-      "id": 1
+      "id": 1,
+      "image":""
     },
     {
       "title": "Star Wars: A New Hope",
+      "year": "1977",
       "rating": "5",
-      "id": 2
+      "id": 2,
+      "image":""
     },
     {
-      "id": 3
-    },
-    {
-      "id": 4
-    },
-    {
-      "id": 5
-    },
-    {
-      "id": 6
-    },
-    {
-      "id": 7
-    },
-    {
-      "id": 8
-    },
-    {
-      "id": 9
+      "title": "Back to the Future",
+      "year": "1985",
+      "rating": "5",
+      "id": 3,
+      "image":""
+    }, {
+      "title": "Scarface",
+      "year": "1983",
+      "rating": "5",
+      "id": 4,
+      "image": "public/img/scarface.jpg"
     }
   ]
 }

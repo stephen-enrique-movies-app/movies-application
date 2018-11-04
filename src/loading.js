@@ -3,7 +3,6 @@
 const $ = require('../node_modules/jquery');
 
 const loadMessage = () => {
-    $('body').css('background', 'red');
     $('.container').html('<h1>Loading...</h1>');
     // console.log("Loading...");
 };
