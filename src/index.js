@@ -12,15 +12,15 @@ import loadMessage from './loading';
 loadMessage();
 
 
-getMovies().then((movies) => {
-  console.log('Here are all the movies:');
-  movies.forEach(({title, rating, id}) => {
-      console.log(`id#${id} - ${title} - rating: ${rating}`);
-  });
-}).catch((error) => {
-  alert('Oh no! Something went wrong.\nCheck the console for details.');
-  console.log(error);
-});
+// getMovies().then((movies) => {
+//   console.log('Here are all the movies:');
+//   movies.forEach(({title, rating, id}) => {
+//       console.log(`id#${id} - ${title} - rating: ${rating}`);
+//   });
+// }).catch((error) => {
+//   alert('Oh no! Something went wrong.\nCheck the console for details.');
+//   console.log(error);
+// });
 
 
 
@@ -53,12 +53,12 @@ $.ajax('./api/movies').done((data) => {
                         "<form id='addMovieForm'>\n" +
                         "  <div class=\"row\">\n" +
                         "    <div class=\"col\">\n" +
-                        "      <input type=\"text\" class=\"form-control w-80\" placeholder=\"Title: \">\n" +
+                        "      <input id='movie-title' type=\"text\" class=\"form-control w-80\" placeholder=\"Title: \">\n" +
                         "    </div>\n" +
                         
                         
                         "    <div class=\"col\">\n" +
-                        "      <input type=\"text\" class=\"form-control w-50\" placeholder=\"Rating (1 - 5)\">\n" +
+                        "      <input type=\"text\" id='movie-rating' class=\"form-control w-50\" placeholder=\"Rating (1 - 5)\">\n" +
                         "    </div>\n" +
                         "<button type='submit' id='addMovieBtn' class=\"btn btn-primary\">Submit</button>" +
                         "  </div>\n" +
@@ -77,7 +77,41 @@ $.ajax('./api/movies').done((data) => {
                 $('#addMovieForm').slideToggle();
             });
 
-            // //==== Add input from form to
+            //==== Add input from form to
+            const newAddedMovie = $('#addMovieForm').on('submit', (e) => {
+                e.preventDefault();
+                let movieTitle = $('#movie-title').val();
+                let movieRating = $('#movie-rating').val();
+                // let movieRating = parseFloat($('#movie-rating').val());
+
+                const addNewMovie = () => {
+                return`
+                    <div class='movie-card float-left'>
+                    <h5>${movieTitle}</h5>
+                    <h5>Rating: ${movieRating}</h5>
+                    </div>`
+                };
+                $(addNewMovie()).appendTo('#movie-container');
+
+            // $(addNewMovie()).appendTo($('div.movie-card').last);
+
+                // getMovieText(movieTitle, movieRating)
+
+            });
+            newAddedMovie;
+
+            // function getMovieText(movieText, mov) {
+            //     console.log(movieText, movi);
+            // }
+        // getMovies(movieTex).then((movies) => {
+        //
+        // }).catch((error) => {
+        //     alert('Oh no! Something went wrong.\nCheck the console for details.');
+        //     console.log(error);
+        // });
+
+
+
             // const addMovieSubmitButton = document.querySelector('#addMovieBtn');
             // addMovieSubmitButton.addEventListener('click',addMovie);
             // addMovieSubmitButton.addEventListener('keydown', keyEnter);
@@ -100,7 +134,6 @@ $.ajax('./api/movies').done((data) => {
                     html += "<h5 class=''><img class='img' src='img/" + movie.id + ".jpg'>";
                     html += movie.title  + " (" + movie.year + ")</h5>";
                     html += "<h5>Rating: " + movie.rating + "</h5>";
-                    // html += "<h5>Year: " + movie.year + "</h5>";
                     html += "</div>";
                     console.log(movie.image)
                 });
