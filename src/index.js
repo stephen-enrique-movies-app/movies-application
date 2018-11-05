@@ -24,6 +24,7 @@ loadMessage();
 
 
 
+
 //====== AJAX Request
 $.ajax('./api/movies').done((data) => {
     console.log(data);
@@ -80,9 +81,54 @@ $.ajax('./api/movies').done((data) => {
             //==== Add input from form to
             const newAddedMovie = $('#addMovieForm').on('submit', (e) => {
                 e.preventDefault();
+
                 let movieTitle = $('#movie-title').val();
                 let movieRating = $('#movie-rating').val();
                 // let movieRating = parseFloat($('#movie-rating').val());
+
+            //     const moviePost = {title: movieTitle, rating: movieRating};
+            //     const url = './api/movies';
+            //     const options = {
+            //         method: 'POST'
+            //     }
+            // };
+            // fetch("./api/movies", {
+                //                    type: "POST",
+                //                     data: {
+                //                        name:     movieTitle,
+                //                      rating: movieRating
+                //                  })
+            //     .then()
+            //     .catch("Error");
+
+                $(document).on('click', '#addMovieBtn', (e) => {
+                    //prevent default
+                    e.preventDefault();
+                    //get info from forms
+                    newAddedMovie(movieTitle, movieRating);
+                    //send to json file
+                    fetch("./api/movies", {
+                        type: "POST",
+                        data: {
+                            name: movieTitle,
+                            rating: movieRating
+                        }
+                            .then(buildMovieCards(data))
+                            .catch("Error")
+                        //retieve the updated json file then rebuild html
+
+
+                    });
+                });
+
+                // const test = $.ajax("./api/movies", {
+                //     type: "POST",
+                //     data: {
+                //         name:     movieTitle,
+                //         rating: movieRating
+                //     }
+                // });
+
 
                 const addNewMovie = () => {
                 return`
@@ -93,12 +139,34 @@ $.ajax('./api/movies').done((data) => {
                 };
                 $(addNewMovie()).appendTo('#movie-container');
 
-            // $(addNewMovie()).appendTo($('div.movie-card').last);
+            $(addNewMovie()).appendTo($('div.movie-card').last);
 
-                // getMovieText(movieTitle, movieRating)
+                getMovieText(movieTitle, movieRating)
 
             });
-            newAddedMovie;
+            // newAddedMovie;
+
+
+            // $.ajax('http://www.omdbapi.com/?s=' + newAddedMovie)
+            //     .then((response) => {
+            //         console.log(response);
+            //         let movies = response.data.Search;
+            //         let output = '';
+            //         $.each(movies, (index, movie) => {
+            //             console.log(output);
+            //         })
+            //     });
+
+
+
+        // $.ajax({
+        //     type: 'GET',
+        //     url: 'http://www.omdbapi.com/?apikey=1eeb6a7f&',
+        //    data: {
+        //    }
+        // }).done((data) => {
+        //     console.log(data);
+        // });
 
             // function getMovieText(movieText, mov) {
             //     console.log(movieText, movi);
@@ -127,6 +195,7 @@ $.ajax('./api/movies').done((data) => {
 
             //==== Function to build Movie Cards
             const buildMovieCards = ((data) => {
+
                 let html = "";
 
                 data.forEach((movie) => {
@@ -141,7 +210,7 @@ $.ajax('./api/movies').done((data) => {
             });
             $(buildMovieCards(data)).appendTo('#movie-container');
 
-    };
+    });
     buildHtml();
 
 
