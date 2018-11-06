@@ -11,6 +11,8 @@ import {getMovies} from './api.js';
 
 import {loadMessage, buildMovieCards} from './loading';
 
+console.log(buildMovieCards);
+
 loadMessage();
 
 
@@ -27,34 +29,35 @@ getMovies().then((movies) => {
 });
 
         //====== TAKES INPUT FROM FORM AND ADDS TO DB.JSON
-            const newAddedMovie = $('#addMovieForm').on('submit', (e) => {
-                e.preventDefault();
+const newAddedMovie = $('#addMovieForm').on('submit', (e) => {
+    e.preventDefault();
 
-                let movieTitle = $('#movie-title').val();
-                let movieRating = $('#movie-rating').val();
-                // let movieRating = parseFloat($('#movie-rating').val());
+    let movieTitle = $('#movie-title').val();
+    let movieRating = $('#movie-rating').val();
+    // let movieRating = parseFloat($('#movie-rating').val());
 
-                let movie = {title: movieTitle, rating: movieRating};
-                    // UPDATES DATABASE
-                    $.ajax({
-                        type: "POST",
-                        data :JSON.stringify(movie),
-                        url: "./api/movies",
-                        contentType: "application/json"
-                    }).done(function()  {
-                        $.get("./api/movies").done(function(data){
-                            buildMovieCards(data);
-                        });
-                    });
+    let movie = {title: movieTitle, rating: movieRating};
+        // UPDATES DATABASE
+        $.ajax({
+            type: "POST",
+            data :JSON.stringify(movie),
+            url: "./api/movies",
+            contentType: "application/json"
+        }).done(function()  {
+            $.get("./api/movies").done(function(data){
+                console.log("Hello");
+                $('#movie-container').html(buildMovieCards(data));
             });
-            newAddedMovie;
+        });
+});
+newAddedMovie;
 
 
         //====== Form view toggle
-            $('#addMovieForm').hide();
-            $('#formHeader').click(function () {
-                $('#addMovieForm').slideToggle();
-            });
+$('#addMovieForm').hide();
+$('#formHeader').click(function () {
+    $('#addMovieForm').slideToggle();
+});
 
 //=====================================================================================================================
 //====== AJAX Request
