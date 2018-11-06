@@ -15,10 +15,21 @@ console.log(buildMovieCards);
 
 loadMessage();
 
+let $movies = $('#movie-container');
+
+let movieTemplate = $('#movie-template').html();
+
+function addMovie(movie) {
+    $movies.append(Mustache.render(movieTemplate, movie));
+}
+
+
 
 
 getMovies().then((movies) => {
     $('#movie-container').html(buildMovieCards(movies));
+    // $('#movie-container').html(addMovie(movies));
+
 
   movies.forEach(({title, rating, id}) => {
       console.log(`id#${id} - ${title} - rating: ${rating}`);
@@ -47,10 +58,13 @@ const newAddedMovie = $('#addMovieForm').on('submit', (e) => {
             $.get("./api/movies").done(function(data){
                 console.log("Hello");
                 $('#movie-container').html(buildMovieCards(data));
+                $('#movie-container').html(addMovie(data));
             });
         });
 });
 newAddedMovie;
+
+
 
 
         //====== Form view toggle
@@ -59,6 +73,52 @@ $('#formHeader').click(function () {
     $('#addMovieForm').slideToggle();
 });
 
+
+// Delete/Edit/Cancel
+$movies.delegate('.remove', 'click', function() {
+    var $li = $(this).closest('li');
+    var self = this;
+
+    $.ajax({
+        type: 'DELETE',
+        url: './api.js' + $(this).attr('data-id'),
+        success: function() {
+            $li.fadeOut(300, function() {
+                $(this).remove();
+            });
+        }
+    });
+});
+
+// Edit
+$movies.delegate('.editMovie', 'click', function () {
+    var $li = $(this).closest('li');
+    $li.find('input.title').val($li.find('span.title').html());
+    $li.find('input.rating').val($li.find('span.rating').html());
+    $li.addClass('edit');
+});
+
+$movies.delegate('.saveMovie', 'click', function () {
+    var $li = $(this).closest('li');
+    var movie = {
+        title: $li.find('input.title').val(),
+        rating: $li.find('input.rating').val(),
+
+    }
+
+    $.ajax({
+        type: 'PUT',
+        url: './api.js' + $li.attr('data-id'),
+        data: movie,
+        success: function(newAddedMovie) {
+            $li.find('span.title').html(movie.title);
+            $li.find('span.rating').html(movie.rating);
+        },
+        error: function () {
+            alert('Error updating movie');
+        }
+    });
+});
 //=====================================================================================================================
 //====== AJAX Request
 // import {loadMessage} from './loading'

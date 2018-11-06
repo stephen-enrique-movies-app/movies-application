@@ -16,11 +16,14 @@
             /*background: #333;*/
             background-image: linear-gradient(to top, #f43b47 0%, #453a94 100%);
             width: 100%;
-            color: white;
+            color: rgb(212	209	222	);
             padding: 20px;
             text-align: center;
             border-bottom: 4px black solid;
             margin-bottom: 10px;
+        }
+        ul {
+            list-style-type: none;
         }
 
     </style>
@@ -60,11 +63,38 @@
                 </form><br>
 
             </div><br>
-                <div id='movie-container' class='flex-container'></div>
+                <ul id='movie-container' class='flex-container'></ul>
+
+                    <!--<div class="col-md-3">-->
+                        <!--<button class="remove">X</button>-->
+                        <!--<button class="edit">Edit</button>-->
+                        <!--<button class="cancel">Cancel</button>-->
+                    <!--</div>-->
+                    <template id="movie-template">
+                        <li data-id="{{id}}">
+                            <p>
+                                <span class="noedit title">{{title}}</span>
+                                <input class="edit title"/>
+                            </p>
+                            <p>Rating:
+                                <span class="noedit rating">{{rating}}</span>
+                                <input class="edit rating"/>
+                            </p>
+                            <buttton data-id='{{id}}' class="remove">X</buttton>
+                            <button class="editMovie noedit">Edit</button>
+                            <button class="saveMovie edit">Save</button>
+                            <button class="cancelMovie edit">Cancel</button>
+                        </li>
+                    </template>
+
+
+
 
     </div>
 
     <script src="/main.js"></script>
+    <script src="/mustache.js"></script>
+
 
 </body>
 </html>

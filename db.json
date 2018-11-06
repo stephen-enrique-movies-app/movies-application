@@ -25,24 +25,14 @@
       "id": 4
     },
     {
-      "title": "test",
+      "title": "Batman",
       "rating": "3",
       "id": 5
     },
     {
-      "title": "test",
-      "rating": "2",
+      "title": "Batman Returns",
+      "rating": "5",
       "id": 6
-    },
-    {
-      "title": "batman",
-      "rating": "3",
-      "id": 7
-    },
-    {
-      "title": "batman",
-      "rating": "3",
-      "id": 8
     }
   ]
 }
