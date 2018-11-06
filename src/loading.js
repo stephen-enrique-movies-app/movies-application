@@ -1,12 +1,31 @@
 "use strict";
 
-const $ = require('../node_modules/jquery');
+import $ from '../node_modules/jquery';
 
-const loadMessage = () => {
-    $('.container').html('<h1>Loading...</h1>');
+export const loadMessage = () => {
+    $('#movie-container').html('Loading...');
     // console.log("Loading...");
 };
-export default loadMessage;
+
+
+
+export const buildMovieCards = ((movies) => {
+
+    let html = "";
+
+    movies.forEach((movie) => {
+        html += "<div class='movie-card float-left'>";
+        html += "<h5 class=''><img class='img' src='img/" + movie.id + ".jpg'>";
+        html += movie.title  + " (" + movie.year + ")</h5>";
+        html += "<h5>Rating: " + movie.rating + "</h5>";
+        html += "</div>";
+    });
+    return html
+    // $('#movie-container').html(html);
+});
+
+
+
 
 // console.log(`${loadMessage}`);
 

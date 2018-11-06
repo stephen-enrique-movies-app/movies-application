@@ -13,7 +13,9 @@
             font-family: Baghdad;
         }
         #main-heading {
-            background: #333;
+            /*background: #333;*/
+            background-image: linear-gradient(to top, #f43b47 0%, #453a94 100%);
+            width: 100%;
             color: white;
             padding: 20px;
             text-align: center;
@@ -26,20 +28,41 @@
 </head>
 <body>
 
+    <div id="main-container" class="container-fluid">
+
+        <h1 id='main-heading' class='text-center'>Our Movie App</h1>
+
+            <div id='addForm'><br>
 
 
+                <h3 id='formHeader' class='float-left'>Add a Movie</h3>
 
-    <div id="main-container" class="container">
-        <div id="movie-container"class="movie-card">
-        </div>
+                <form id='addMovieForm'>
 
+                    <div class="row">
 
-        <!--<h1>Movie App Title</h1>-->
-        <!--<p>To get started, edit <code>src/index.js</code>.</p>-->
+                        <div class="col">
+
+                            <input id='movie-title' type="text" class="form-control w-80" placeholder="Title: ">
+
+                        </div>
+
+                        <div class="col">
+
+                            <input type="text" id='movie-rating' class="form-control w-50" placeholder="Rating (1 - 5)">
+
+                        </div>
+
+                        <button type='submit' id='addMovieBtn' class="btn btn-primary">Submit</button>
+
+                    </div>
+
+                </form><br>
+
+            </div><br>
+                <div id='movie-container' class='flex-container'></div>
+
     </div>
-
-
-
 
     <script src="/main.js"></script>
 
